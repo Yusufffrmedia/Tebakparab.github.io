@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Parab</title>
+    <style>
+        body {
+            background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #tebakBtn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px 2px pink;
+            border-radius: 5px;
+        }
+
+        #loading {
+            display: none;
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid red;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #result {
+            display: none;
+            margin-top: 20px;
+            font-size: 24px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <button id="tebakBtn">Tebak Parab</button>
+        <div id="loading"></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("tebakBtn").onclick = function() {
+            // Daftar kata-kata yang akan dipilih secara acak
+            var words = ["heunceut", "kadal", "apem", "anjink", "kanjut badag", "spakbor mio"];
+
+            // Pilih kata secara acak dari daftar
+            var randomWord = words[Math.floor(Math.random() * words.length)];
+
+            // Sembunyikan tombol dan tampilkan animasi loading
+            document.getElementById("tebakBtn").style.display = "none";
+            document.getElementById("loading").style.display = "block";
+
+            // Simulasikan proses loading selama 2 detik
+            setTimeout(function() {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("result").style.display = "block";
+                document.getElementById("result").innerText = randomWord;
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
